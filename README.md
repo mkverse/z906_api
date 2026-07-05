@@ -60,7 +60,8 @@ Configuration is done entirely through the UI:
 
 You'll be asked for the **host** (hostname or IP, optionally with a port) of your REST bridge. The
 config flow validates it by issuing a GET to `/power` and expects a JSON response containing a
-`value` field.
+`value` field. The same host can't be added twice, and if the bridge's address ever changes you can
+update it in place via the integration's **Reconfigure** option instead of removing and re-adding it.
 
 ## REST contract
 

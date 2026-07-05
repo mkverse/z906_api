@@ -7,6 +7,13 @@
         "data": {
           "host": "Host"
         }
+      },
+      "reconfigure": {
+        "title": "Update Logitech Z906 connection",
+        "description": "Update the host of your Z906 REST bridge.",
+        "data": {
+          "host": "Host"
+        }
       }
     },
     "error": {
