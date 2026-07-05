@@ -1,0 +1,16 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Logitech Z906",
+        "description": "Enter the host of your Z906 REST bridge.",
+        "data": {
+          "host": "Host"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Z906 bridge. Check the host and try again."
+    }
+  }
+}
