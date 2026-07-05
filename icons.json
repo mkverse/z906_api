@@ -1,0 +1,22 @@
+{
+  "entity": {
+    "sensor": {
+      "temperature": {
+        "default": "mdi:thermometer"
+      }
+    },
+    "switch": {
+      "power": {
+        "default": "mdi:power-standby"
+      },
+      "mute": {
+        "default": "mdi:volume-off"
+      }
+    },
+    "select": {
+      "input": {
+        "default": "mdi:audio-input-rca"
+      }
+    }
+  }
+}
