@@ -5,7 +5,10 @@ separate HTTP/REST bridge.
 
 This integration does **not** talk to the Z906 directly — it expects a bridge running somewhere on
 your network that exposes the Z906's serial/RS-232 control protocol over a small REST API (see
-[REST contract](#rest-contract) below). Building/running that bridge is out of scope for this repo.
+[REST contract](#rest-contract) below). This component is built against the REST API provided by
+[LewisSmallwood/IoT-Logitech-Z906](https://github.com/LewisSmallwood/IoT-Logitech-Z906); set that
+up first and point this integration at its host. Building/running the bridge itself is out of scope
+for this repo.
 
 - `iot_class`: `local_polling`
 - No extra Python dependencies — uses only libraries bundled with Home Assistant (`aiohttp`,
