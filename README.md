@@ -20,10 +20,10 @@ for this repo.
 | -------- | --------------------- | ------------------------------------------------------------- |
 | switch   | Power                 | Polls `/power`. Turning on fires power-on/input-enable/mute-off concurrently. |
 | switch   | Mute                  | Command-only, does not poll.                                  |
-| number   | Main Volume           | Range 0–255, slider.                                           |
-| number   | Subwoofer Volume      | Range 0–255, slider.                                           |
-| number   | Center Volume         | Range 0–255, slider.                                           |
-| number   | Rear Volume           | Range 0–255, slider.                                           |
+| number   | Main Volume           | 0–100%, slider (backed by a 0–255 raw value on the bridge).   |
+| number   | Subwoofer Volume      | 0–100%, slider (backed by a 0–255 raw value on the bridge).   |
+| number   | Center Volume         | 0–100%, slider (backed by a 0–255 raw value on the bridge).   |
+| number   | Rear Volume           | 0–100%, slider (backed by a 0–255 raw value on the bridge).   |
 | select   | Input Source          | TRS 5.1 / RCA 2.0 / Optical 1 / Optical 2 / Coaxial.           |
 | sensor   | Temperature           | Disabled by default; enable it in the entity registry if your bridge reports temperature. |
 
