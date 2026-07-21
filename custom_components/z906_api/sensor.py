@@ -1,3 +1,7 @@
+"""Sensor platform: read-only temperature, driven by a declarative spec table."""
+
+from dataclasses import dataclass
+
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -5,39 +9,40 @@ from homeassistant.components.sensor import (
 )
 from homeassistant.const import CONF_HOST
 
-from .base_entity import Z906Entity
+from .base_entity import EntitySpec, Z906Entity
 from .const import DOMAIN, Endpoints
+
+
+@dataclass(frozen=True)
+class SensorSpec(EntitySpec):
+    """A read-only entity. No write side."""
+
+
+SENSOR_ENTITIES = [
+    SensorSpec(
+        name="Temperature",
+        unique_id_suffix="temperature",
+        get_endpoint=Endpoints.TEMPERATURE,
+        cast=float,
+    ),
+]
+
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up sensors from config entry."""
     host = entry.data[CONF_HOST]
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities([
-        Z906TemperatureSensor(coordinator, host),
-    ])
+    async_add_entities([Z906Sensor(coordinator, host, spec) for spec in SENSOR_ENTITIES])
 
-class Z906TemperatureSensor(Z906Entity, SensorEntity):
-    """Temperature sensor entity for the Logitech Z906 controller."""
 
-    _attr_name = "Temperature"
+class Z906Sensor(Z906Entity, SensorEntity):
+    """A read-only sensor for the Logitech Z906, driven by SensorSpec."""
+
     _attr_native_unit_of_measurement = "°C"
     _attr_device_class = SensorDeviceClass.TEMPERATURE
     _attr_state_class = SensorStateClass.MEASUREMENT
-    _attr_translation_key = "temperature"
     _attr_entity_registry_enabled_default = False
-
-    def __init__(self, coordinator, host):
-        super().__init__(coordinator, host)
-        self._attr_unique_id = f"{self._host}-temperature"
-
-    @property
-    def available(self) -> bool:
-        return (
-            super().available
-            and self.coordinator.data.get(Endpoints.TEMPERATURE) is not None
-        )
 
     @property
     def native_value(self):
-        value = self.coordinator.data.get(Endpoints.TEMPERATURE)
-        return float(value) if value is not None else None
+        return self._read()
