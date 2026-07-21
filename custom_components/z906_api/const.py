@@ -9,7 +9,6 @@ class Endpoints(StrEnum):
     TEMPERATURE = "/temperature"
     INPUT_STATE = "/input"
     INPUT_ENABLE = "/input/enable"
-    INPUT_SET = "/input"
     VOLUME_MAIN = "/volume/main"
     VOLUME_MAIN_SET = "/volume/main/set"
     VOLUME_CENTER = "/volume/center"
