@@ -11,3 +11,6 @@ __pycache__/
 .env
 .venv/
 venv/
+
+# Local agent scratch state
+.superpowers/
