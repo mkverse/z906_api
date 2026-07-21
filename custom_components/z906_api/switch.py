@@ -1,6 +1,5 @@
 """Switch platform: power and mute, driven by a declarative spec table."""
 
-import logging
 from dataclasses import dataclass
 from typing import Callable
 
@@ -9,8 +8,6 @@ from homeassistant.const import CONF_HOST
 
 from .base_entity import Command, EntitySpec, Z906Entity
 from .const import DOMAIN, Endpoints
-
-_LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
